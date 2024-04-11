@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)https://paintz.app/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- Google Analytics -->
+		<script type="text/javascript" async="" src="./untitled.png - PaintZ_files/analytics.js.Без названия"></script><script type="text/javascript" async="" src="./untitled.png - PaintZ_files/js"></script><script async="" src="./untitled.png - PaintZ_files/js(1)"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-125332101-1');
+		</script>
+		
+		<!-- Force HTTPS. -->
+		<link rel="canonical" href="https://paintz.app/">
+		<meta property="og:url" content="https://paintz.app">
+		<script type="text/javascript">
+			var CANONICAL_HOST = "paintz.app";
+			if (CANONICAL_HOST === window.location.host && window.location.protocol !== 'https:') {
+				window.location.protocol = 'https';
+			}
+			
+			// Set up offline caching.
+			if (!!navigator.serviceWorker) {
+				navigator.serviceWorker.register('service_worker.js').then(function (registration) {
+					console.log('Registered service worker with scope:', registration.scope);
+				});
+				navigator.serviceWorker.addEventListener('message', function (ev) {
+					// If a new image was sent to be opened, open it.
+					// If this is first load, save it to be fetched during normal initialization.
+					try {
+						openImage(ev.data.file);
+					} catch (err) {
+						window.sharedFile = ev.data.file;
+					}
+				});
+			} else {
+				// If service worker is unavailable, fall back to app cache.
+				document.addEventListener('DOMContentLoaded', function () {
+					var appCacheIFrame = document.createElement('iframe');
+					appCacheIFrame.src = 'app_cacher.html';
+					appCacheIFrame.style.position = 'absolute';
+					appCacheIFrame.style.width = '1px';
+					appCacheIFrame.style.height = '1px';
+					appCacheIFrame.style.border = '0 none';
+					document.body.appendChild(appCacheIFrame);
+				});
+			}
+		</script>
+		
+		<title>untitled.png - PaintZ</title>
+		<meta property="og:title" content="PaintZ">
+		<meta name="description" content="MS Paint for Chromebooks. Create and edit drawings and other images. Simple, fast, works offline, touch- and mouse-friendly, and no plug-ins required!">
+		<meta property="og:description" content="MS Paint for Chromebooks. Create and edit drawings and other images. Simple, fast, works offline, touch- and mouse-friendly, and no plug-ins required!">
+		<meta property="og:image" content="https://paintz.app/images/og_image.png">
+		<meta property="fb:profile_id" content="1017401634953412">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@PaintZApp">
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+		<link rel="manifest" href="https://paintz.app/manifest.webapp">
+		
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		
+		<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/gdjcnhanmagpjdpilaehedkchegnkdoj">
+		
+		<meta name="msapplication-tooltip" content="Create and edit drawings">
+		<meta name="msapplication-navbutton-color" content="#212121">
+		
+		<meta name="theme-color" content="#212121">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="https://paintz.app/images/logo/favicon.ico">
+		<link rel="icon" sizes="128x128" href="https://paintz.app/images/logo/128.png">
+		<link rel="icon" sizes="256x256" href="https://paintz.app/images/logo/256.png">
+		<link rel="apple-touch-icon-precomposed" sizes="128x128" href="https://paintz.app/images/logo/128.png">
+		
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/material-elements.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/material-widgets.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/material-depth.css">
+		
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/roboto.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/splash_screen.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/layout.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/toolbars.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/dialogs.css">
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/color_picker.css">
+		
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/dark.css" id="themeStyleLink">
+		
+		<link rel="stylesheet" type="text/css" href="./untitled.png - PaintZ_files/print.css" media="print">
+		
+		<!-- Libraries, helpers, and polyfills -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/material-touch.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/canvas-to-blob.min.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/colorpicker.min.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/pep.min.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/promise.auto.min.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/utils.js.Без названия" defer="defer"></script>
+		
+		<!-- Managers -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/clipboard.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/keyboard.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/settings.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/undo.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/zoom.js.Без названия" defer="defer"></script>
+		
+		<!-- Dialogs -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/progress_spinner.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/dialog.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/bottom_sheet.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/about.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/auto_restore.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/clear.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/color_picker.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/coffee.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/help.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/install.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/keyboard(1).js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/ms_access_key.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/ms_access_key_help.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/patreon.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/rate.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/resize.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/save.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/settings(1).js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/welcome.js.Без названия" defer="defer"></script>
+		
+		<!-- Toolbar -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/toolbox.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/app.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/color_picker(1).js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/dimensions.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/draw_tool_options.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/floating_selection_toolbar.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/image.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/no_tool_options.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/select_tool_options.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/text_tool_options.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/tools.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/zoom(1).js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/toolbar.js.Без названия" defer="defer"></script>
+		
+		<!-- Drawing tools -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/floating_region.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/tool.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/drawing.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/shape.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/pencil.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/doodle.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/airbrush.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/line.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/curve.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/polygon.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/rectangle.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/rounded_rectangle.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/oval.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/eraser.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/floodfill.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/eyedropper.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/selection.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/freeform_selection.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/text.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/pan.js.Без названия" defer="defer"></script>
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/tools(1).js.Без названия" defer="defer"></script>
+		
+		<!-- Pac-Man easter egg -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/pacman.js.Без названия" defer="defer"></script>
+		
+		<!-- Core app -->
+		<script type="text/javascript" src="./untitled.png - PaintZ_files/app(1).js.Без названия" defer="defer"></script>
+	<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; }
+[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }
+[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }
+[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
+</style></head>
+	<body>
+		<!-- Top toolbar -->
+		<div class="appBar z2" id="toolbar" role="toolbar"><div class="toolbox"><button id="clearBtn" title="Clear">
+	<svg role="img">
+		<use xlink:href="images/icons/clear.svg#icon" href="images/icons/clear.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="openBtn" title="Open image... (Ctrl+O)">
+	<svg role="img">
+		<use xlink:href="images/icons/open.svg#icon" href="images/icons/open.svg#icon"></use>
+	</svg>
+</button><!--
+--><input type="file" accept="image/*" id="upload" style="display: none;"><!--
+--><button id="saveBtn" title="Save as... (Ctrl+S)">
+	<svg role="img">
+		<use xlink:href="images/icons/save.svg#icon" href="images/icons/save.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="printBtn" title="Print... (Ctrl+P)">
+	<svg role="img">
+		<use xlink:href="images/icons/print.svg#icon" href="images/icons/print.svg#icon"></use>
+	</svg>
+</button><!--
+--><br><!--
+--><button id="undoBtn" title="Undo (Ctrl+Z)">
+	<svg role="img">
+		<use xlink:href="images/icons/undo.svg#icon" href="images/icons/undo.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="redoBtn" title="Redo (Ctrl+Y)" disabled="">
+	<svg role="img">
+		<use xlink:href="images/icons/redo.svg#icon" href="images/icons/redo.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="resizeBtn" title="Crop or scale... (Ctrl+E)">
+	<svg role="img">
+		<use xlink:href="images/icons/resize.svg#icon" href="images/icons/resize.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="pasteBtn" title="Paste (Ctrl+V)">
+	<svg role="img">
+		<use xlink:href="images/icons/paste.svg#icon" href="images/icons/paste.svg#icon"></use>
+	</svg>
+</button><!--
+--><input type="file" accept="image/*" id="pasteFrom" style="display: none;">
+</div><span class="divider"></span><div class="toolbox"><form id="tools">
+	<input type="radio" name="tool" value="selection" id="selectionTool"><!--
+	--><label role="button" for="selectionTool" title="Selection (S)">
+		<svg role="img">
+			<use xlink:href="images/icons/select.svg#icon" href="images/icons/select.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="eraser" id="eraserTool"><!--
+	--><label role="button" for="eraserTool" title="Eraser (E)">
+		<svg role="img">
+			<use xlink:href="images/icons/eraser.svg#icon" href="images/icons/eraser.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="eyedropper" id="eyedropperTool"><!--
+	--><label role="button" for="eyedropperTool" title="Color picker (I)">
+		<svg role="img">
+			<use xlink:href="images/icons/eyedropper.svg#icon" href="images/icons/eyedropper.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="pencil" id="pencilTool"><!--
+	--><label role="button" for="pencilTool" title="Pencil (P)">
+		<svg role="img">
+			<use xlink:href="images/icons/pencil.svg#icon" href="images/icons/pencil.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="airbrush" id="airbrushTool"><!--
+	--><label role="button" for="airbrushTool" title="Airbrush">
+		<svg role="img">
+			<use xlink:href="images/icons/airbrush.svg#icon" href="images/icons/airbrush.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="line" id="lineTool"><!--
+	--><label role="button" for="lineTool" title="Line (L)">
+		<svg role="img">
+			<use xlink:href="images/icons/line.svg#icon" href="images/icons/line.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="rect" id="rectTool"><!--
+	--><label role="button" for="rectTool" title="Rectangle (R)">
+		<svg role="img">
+			<use xlink:href="images/icons/rect.svg#icon" href="images/icons/rect.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="oval" id="ovalTool"><!--
+	--><label role="button" for="ovalTool" title="Oval (O)">
+		<svg role="img">
+			<use xlink:href="images/icons/oval.svg#icon" href="images/icons/oval.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><br><!--
+	--><input type="radio" name="tool" value="freeformSelection" id="freeformSelectionTool"><!--
+	--><label role="button" for="freeformSelectionTool" title="Freeform selection (F)">
+		<svg role="img">
+			<use xlink:href="images/icons/freeform_select.svg#icon" href="images/icons/freeform_select.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="floodFill" id="floodFillTool"><!--
+	--><label role="button" for="floodFillTool" title="Flood fill (K)">
+		<svg role="img">
+			<use xlink:href="images/icons/paint_bucket.svg#icon" href="images/icons/paint_bucket.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="pan" id="panTool"><!--
+	--><label role="button" for="panTool" title="Pan (H)">
+		<svg role="img">
+			<use xlink:href="images/icons/pan.svg#icon" href="images/icons/pan.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="doodle" id="doodleTool"><!--
+	--><label role="button" for="doodleTool" title="Brush (B)">
+		<svg role="img">
+			<use xlink:href="images/icons/brush.svg#icon" href="images/icons/brush.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="text" id="textTool"><!--
+	--><label role="button" for="textTool" title="Text (T)">
+		<svg role="img">
+			<use xlink:href="images/icons/text.svg#icon" href="images/icons/text.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="curve" id="curveTool"><!--
+	--><label role="button" for="curveTool" title="Curve (C)">
+		<svg role="img">
+			<use xlink:href="images/icons/curve.svg#icon" href="images/icons/curve.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="polygon" id="polygonTool"><!--
+	--><label role="button" for="polygonTool" title="Polygon">
+		<svg role="img">
+			<use xlink:href="images/icons/polygon.svg#icon" href="images/icons/polygon.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="tool" value="roundRect" id="roundRectTool"><!--
+	--><label role="button" for="roundRectTool" title="Rounded rectangle">
+		<svg role="img">
+			<use xlink:href="images/icons/rounded_rect.svg#icon" href="images/icons/rounded_rect.svg#icon"></use>
+		</svg>
+	</label>
+</form>
+</div><span class="divider"></span><div class="toolbox" style="display: none;"><p id="noToolOptionsMessage">
+	No tool
+	<br>
+	options
+</p>
+</div><div class="toolbox" style="display: none;"><svg role="img" class="icon" style="margin-left: 24px;">
+	<use xlink:href="images/icons/line_weight.svg#icon" href="images/icons/line_weight.svg#icon"></use>
+</svg><!--
+--><select title="Line width ([/])" id="lineWidth">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="12">12</option>
+	<option value="14">14</option>
+	<option value="16">16</option>
+	<option value="18">18</option>
+	<option value="20">20</option>
+	<option value="25">25</option>
+	<option value="30">30</option>
+	<option value="35">35</option>
+	<option value="40">40</option>
+	<option value="45">45</option>
+	<option value="50">50</option>
+</select><!--
+--><br><!--
+--><form id="outlineOptions"><!--
+	--><input type="radio" name="outlineOption" value="outlineOnly" id="outlineOnly"><!--
+	--><label role="button" for="outlineOnly" title="Outline only">
+		<svg role="img">
+			<use xlink:href="images/icons/outline_only.svg#icon" href="images/icons/outline_only.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="outlineOption" value="fillOnly" id="fillOnly"><!--
+	--><label role="button" for="fillOnly" title="Fill only">
+		<svg role="img">
+			<use xlink:href="images/icons/fill_only.svg#icon" href="images/icons/fill_only.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="radio" name="outlineOption" value="outlineFill" id="outlineFill"><!--
+	--><label role="button" for="outlineFill" title="Outline and fill">
+		<svg role="img">
+			<use xlink:href="images/icons/outline_fill.svg#icon" href="images/icons/outline_fill.svg#icon"></use>
+		</svg>
+	</label><!--
+--></form>
+</div><div class="toolbox" id="selectOptions" style=""><button id="rotCCWBtn" title="Rotate counterclockwise 90°">
+	<svg role="img">
+		<use xlink:href="images/icons/rotate.svg#icon" href="images/icons/rotate.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="rotCWBtn" title="Rotate clockwise 90°">
+	<svg role="img" style="-webkit-transform: scaleX(-1); -moz-transform: scaleX(-1); -ms-transform: scaleX(-1); -o-transform: scaleX(-1); transform: scaleX(-1);">
+		<use xlink:href="images/icons/rotate.svg#icon" href="images/icons/rotate.svg#icon"></use>
+	</svg>
+</button><!--
+--><input type="radio" name="transparentSelecton" id="transparentSelectionOn"><!--
+--><label role="button" for="transparentSelectionOn" title="Transparent selection"><!--
+	--><svg role="img">
+		<use xlink:href="images/icons/selection_transparent.svg#icon" href="images/icons/selection_transparent.svg#icon"></use>
+	</svg><!--
+--></label><!--
+--><input type="radio" name="transparentSelecton" id="transparentSelectionOff"><!--
+--><label role="button" for="transparentSelectionOff" title="Opaque selection"><!--
+	--><svg role="img">
+		<use xlink:href="images/icons/selection_opaque.svg#icon" href="images/icons/selection_opaque.svg#icon"></use>
+	</svg><!--
+--></label><!--
+--><br><!--
+--><button id="flipHorizBtn" title="Flip horizontal">
+	<svg role="img">
+		<use xlink:href="images/icons/flip.svg#icon" href="images/icons/flip.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="flipVertBtn" title="Flip vertical">
+	<svg role="img" style="-webkit-transform: rotateZ(90deg); -moz-transform: rotateZ(90deg); -ms-transform: rotateZ(90deg); -o-transform: rotateZ(90deg); transform: rotateZ(90deg);">
+		<use xlink:href="images/icons/flip.svg#icon" href="images/icons/flip.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="invertColorsBtn" title="Invert colors (Ctrl+I)">
+	<svg role="img">
+		<use xlink:href="images/icons/invert_colors.svg#icon" href="images/icons/invert_colors.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="selectAllBtn" title="Select all (Ctrl+A)">
+	<svg role="img">
+		<use xlink:href="images/icons/select_all.svg#icon" href="images/icons/select_all.svg#icon"></use>
+	</svg>
+</button>
+</div><div class="toolbox" style="display: none;"><svg role="img" class="icon">
+	<use xlink:href="images/icons/font_family.svg#icon" href="images/icons/font_family.svg#icon"></use>
+</svg><!--
+--><select title="Font family" id="fontFamilySelect"><option value="sans-serif" style="font-family: sans-serif;">Sans-serif</option><option value="serif" style="font-family: serif;">Serif</option><option value="monospace" style="font-family: monospace;">Monospace</option><option disabled=""></option><option value="&#39;Arial&#39;, sans-serif" style="font-family: Arial, sans-serif;">Arial</option><option value="&#39;Arial Black&#39;, sans-serif" style="font-family: &quot;Arial Black&quot;, sans-serif;">Arial Black</option><option value="&#39;Comic Sans MS&#39;, &#39;Comic Sans&#39;, sans-serif" style="font-family: &quot;Comic Sans MS&quot;, &quot;Comic Sans&quot;, sans-serif;">Comic Sans MS</option><option value="&#39;Courier New&#39;, &#39;Courier&#39;, monospace" style="font-family: &quot;Courier New&quot;, Courier, monospace;">Courier New</option><option value="&#39;Georgia&#39;, serif" style="font-family: Georgia, serif;">Georgia</option><option value="&#39;Impact&#39;, &#39;Charcoal&#39;, sans-serif" style="font-family: Impact, Charcoal, sans-serif;">Impact</option><option value="&#39;Roboto&#39;, &#39;Helvetica Neue&#39;, &#39;Helvetica&#39;, sans-serif" style="font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">Roboto</option><option value="&#39;Times New Roman&#39;, &#39;Times&#39;, serif" style="font-family: &quot;Times New Roman&quot;, Times, serif;">Times New Roman</option><option value="&#39;Verdana&#39;, &#39;Geneva&#39;, sans-serif" style="font-family: Verdana, Geneva, sans-serif;">Verdana</option><option disabled=""></option><option value="paintz-request-local-font-access">Show more fonts...</option></select><!--
+--><input type="radio" name="textFillToggle" id="textFillOff"><!--
+--><label role="button" for="textFillOff" title="Transparent text box">
+	<svg role="img">
+		<use xlink:href="images/icons/text.svg#icon" href="images/icons/text.svg#icon"></use>
+	</svg>
+</label><!--
+--><input type="radio" name="textFillToggle" id="textFillOn"><!--
+--><label role="button" for="textFillOn" title="Opaque text box">
+	<svg role="img">
+		<use xlink:href="images/icons/text_fill.svg#icon" href="images/icons/text_fill.svg#icon"></use>
+	</svg>
+</label><!--
+--><br><!--
+--><svg role="img" class="icon">
+	<use xlink:href="images/icons/font_size.svg#icon" href="images/icons/font_size.svg#icon"></use>
+</svg><!--
+--><select title="Font size" id="fontSizeSelect">
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="14">14</option>
+	<option value="16">16</option>
+	<option value="18">18</option>
+	<option value="20">20</option>
+	<option value="22">22</option>
+	<option value="24">24</option>
+	<option value="26">26</option>
+	<option value="28">28</option>
+	<option value="32">32</option>
+	<option value="36">36</option>
+	<option value="40">40</option>
+	<option value="48">48</option>
+	<option value="56">56</option>
+	<option value="64">64</option>
+	<option value="72">72</option>
+	<option value="96">96</option>
+	<option value="128">128</option>
+	<option value="160">160</option>
+	<option value="192">192</option>
+</select><!--
+--><span id="textFormatOptions"><!--
+	--><input type="checkbox" name="boldToggle" id="boldToggle"><!--
+	--><label role="button" for="boldToggle" title="Bold (Ctrl+B)"><!--
+		--><svg role="img">
+			<use xlink:href="images/icons/bold.svg#icon" href="images/icons/bold.svg#icon"></use>
+		</svg><!--
+	--></label><!--
+	--><input type="checkbox" name="italicToggle" id="italicToggle"><!--
+	--><label role="button" for="italicToggle" title="Italic (Ctrl+I)">
+		<svg role="img">
+			<use xlink:href="images/icons/italic.svg#icon" href="images/icons/italic.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="checkbox" name="underlineToggle" id="underlineToggle"><!--
+	--><label role="button" for="underlineToggle" title="Underline (Ctrl+U)">
+		<svg role="img">
+			<use xlink:href="images/icons/underline.svg#icon" href="images/icons/underline.svg#icon"></use>
+		</svg>
+	</label><!--
+	--><input type="checkbox" name="strikeToggle" id="strikeToggle"><!--
+	--><label role="button" for="strikeToggle" title="Strikethrough (Alt+Shift+5)">
+		<svg role="img">
+			<use xlink:href="images/icons/strike.svg#icon" href="images/icons/strike.svg#icon"></use>
+		</svg>
+	</label><!--
+--></span>
+</div><span class="divider"></span><button title="Selected colors (click for advanced picker)" id="colors" class="z1" style="border-color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"></button><div class="toolbox" id="colorPicker"><button title="Black" aria-label="Black" data-value="#000000"></button><!--
+--><button title="Brown" aria-label="Brown" data-value="#795548"></button><!--
+--><button title="Red" aria-label="Red" data-value="#f44336"></button><!--
+--><button title="Orange" aria-label="Orange" data-value="#ff9800"></button><!--
+--><button title="Yellow" aria-label="Yellow" data-value="#ffeb3b"></button><!--
+--><button title="Lime" aria-label="Lime" data-value="#76ff03"></button><!--
+--><br><!--
+--><button title="White" aria-label="White" data-value="#ffffff"></button><!--
+--><button title="Gray" aria-label="Gray" data-value="#9e9e9e"></button><!--
+--><button title="Green" aria-label="Green" data-value="#4caf50"></button><!--
+--><button title="Light blue" aria-label="Light blue" data-value="#80d8ff"></button><!--
+--><button title="Blue" aria-label="Blue" data-value="#2962ff"></button><!--
+--><button title="Purple" aria-label="Purple" data-value="#9c27b0"></button>
+</div><span class="divider"></span><div class="toolbox"><button id="fullScreenBtn" title="Full screen">
+	<svg role="img">
+		<use xlink:href="images/icons/full_screen.svg#icon" href="images/icons/full_screen.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="aboutBtn" title="About">
+	<svg role="img">
+		<use xlink:href="images/icons/info.svg#icon" href="images/icons/info.svg#icon"></use>
+	</svg>
+</button><!--
+--><br><!--
+--><button id="settingsBtn" title="Settings">
+	<svg role="img">
+		<use xlink:href="images/icons/settings.svg#icon" href="images/icons/settings.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="helpBtn" title="Help">
+	<svg role="img">
+		<use xlink:href="images/icons/help.svg#icon" href="images/icons/help.svg#icon"></use>
+	</svg>
+</button>
+</div></div>
+		
+		<!-- Flow-positioned canvas size holder -->
+		<div class="canvas" id="canvasPositioner" style="width: 640px; height: 480px;">
+			<!-- Image canvas -->
+			<canvas class="z1 canvas" id="canvas" width="640" height="480"></canvas>
+			<!-- Drawing canvas -->
+			<canvas class="canvas" id="preCanvas" width="640" height="480" touch-action="none" style="cursor: crosshair;"></canvas>
+			<!-- Grid canvas -->
+			<canvas class="canvas" id="gridCanvas" width="640" height="480"></canvas>
+		<div class="floatingRegion" touch-action="none" style="transform: translate(228px, 131px); width: 229px; height: 189px;"><button class="resizeHandle resizeNW" data-direction="nw"></button><button class="resizeHandle resizeN" data-direction="n"></button><button class="resizeHandle resizeNE" data-direction="ne"></button><button class="resizeHandle resizeE" data-direction="e"></button><button class="resizeHandle resizeSE" data-direction="se"></button><button class="resizeHandle resizeS" data-direction="s"></button><button class="resizeHandle resizeSW" data-direction="sw"></button><button class="resizeHandle resizeW" data-direction="w"></button></div><div class="floatingToolbar card z1" role="toolbar" style="transform: translate(237px, 64px);"><button id="deselectBtn" title="Done (Esc)">
+	<svg role="img">
+		<use xlink:href="images/icons/done.svg#icon" href="images/icons/done.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="deleteBtn" title="Erase (Del)">
+	<svg role="img">
+		<use xlink:href="images/icons/eraser.svg#icon" href="images/icons/eraser.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="cutBtn" title="Cut (Ctrl+X)">
+	<svg role="img">
+		<use xlink:href="images/icons/cut.svg#icon" href="images/icons/cut.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="copyBtn" title="Copy (Ctrl+C)">
+	<svg role="img">
+		<use xlink:href="images/icons/copy.svg#icon" href="images/icons/copy.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="duplicateBtn" title="Duplicate (Ctrl+D)">
+	<svg role="img">
+		<use xlink:href="images/icons/duplicate.svg#icon" href="images/icons/duplicate.svg#icon"></use>
+	</svg>
+</button><!--
+--><button id="cropBtn" title="Crop">
+	<svg role="img">
+		<use xlink:href="images/icons/crop.svg#icon" href="images/icons/crop.svg#icon"></use>
+	</svg>
+</button>
+</div></div>
+		
+		<!-- Bottom toolbar -->
+		<div class="appBar z2" id="bottomBar" role="toolbar"><div class="toolbox" id="dimensionsToolbox"><button id="resolutionBtn" title="Canvas size"><!--
+	--><svg role="img">
+		<use xlink:href="images/icons/image.svg#icon" href="images/icons/image.svg#icon"></use>
+	</svg><!--
+	--><span>640 × 480px</span><!--
+--></button><!--
+--><span class="divider"></span><!--
+--><span title="Pointer coordinates"><!--
+	--><svg role="img" class="icon">
+		<use xlink:href="images/icons/cursor.svg#icon" href="images/icons/cursor.svg#icon"></use>
+	</svg><!--
+	--><span id="pointerCoords">360, 185px</span><!--
+--></span>
+</div><div class="toolbox" id="zoomToolbox"><input type="number" id="zoomPercent" value="100" maxlength="3" min="1" max="999" title="Zoom level"><!--
+--><span class="icon">%</span>
+<button id="zoomOutBtn" title="Zoom out (Ctrl+Alt+-)"><!--
+	--><svg role="img">
+		<use xlink:href="images/icons/zoom_out.svg#icon" href="images/icons/zoom_out.svg#icon"></use>
+	</svg><!--
+--></button><!--
+--><input type="range" id="zoomSlider" list="zoomLevels" min="0" max="6" step="1" value="3"><!--
+--><button id="zoomInBtn" title="Zoom in (Ctrl+Alt+=)"><!--
+	--><svg role="img">
+		<use xlink:href="images/icons/zoom_in.svg#icon" href="images/icons/zoom_in.svg#icon"></use>
+	</svg><!--
+--></button>
+</div></div>
+		
+		<!-- Dialog containers -->
+		<div id="bottomSheetsContainer"></div>
+		<div id="dialogsContainer" class="" style="display: none;"></div>
+		
+		<!-- Splash screen -->
+		
+		
+		<!-- Invisible elements -->
+		<canvas id="cursorCanvas" width="227" height="187"></canvas>
+		<audio src="audio/pacman_start.mp3" id="pacManStartSound"></audio>
+	
+
+<div id="progressContainer" class="" style="display: none;"><progress class="circular"></progress></div></body></html>
